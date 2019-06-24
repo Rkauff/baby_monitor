@@ -49,16 +49,17 @@ def main():
 
 
     def warm_message():
-        warm_text = client.messages.create(
-            to="+16307889299",
-            from_="+16305282150",
+        client.messages.create(
+            to='ALERT_PHONE',
+            from_='TWILIO_PHONE’,
             body="It's currently " + str(read_temp()) + " degrees in my crib, how about " \
             "turning up the air conditioning or opening a window?")
 
+        
     def cold_message():
-        cold_text = client.messages.create(
-            to="+16307889299",
-            from_="+16305282150",
+        client.messages.create(
+            to='ALERT_PHONE',
+            from_='TWILIO_PHONE’,
             body="It's currently " + str(read_temp()) + " degrees in my crib, how about " \
             "turning the heat up a little bit?")
         
@@ -66,7 +67,7 @@ def main():
     while True:
         if read_temp() > 82:
             warm_message()
-        if read_temp() < 60:
+        if read_temp() < 62:
             cold_message()
         time.sleep(300)
         
